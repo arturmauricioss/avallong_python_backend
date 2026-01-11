@@ -9,3 +9,7 @@ def home():
 @app.route("/soma/<int:a>/<int:b>")
 def soma(a, b):
     return jsonify({"resultado": a + b})
+
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000)
