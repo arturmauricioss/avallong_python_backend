@@ -1,24 +1,11 @@
-def menu():
-    print("\n---Menu---")
-    print("1 - Soma")
-    print("0 - Sair")
-    return int(input(">>"))
+from flask import Flask, jsonify
 
-def soma():
-    a = int(input("Digite um numero: "))
-    b = int(input("Digite outro numero: "))
-    return a+b
+app = Flask(__name__)
 
-while True:
-    opcao = menu()
-    
-    if opcao == 0:
-        print("Encerrando o programa...")
-        break
-    
-    elif opcao == 1:
-        print("Resultado: ", soma())
-    
-    else:
-        print("Opção inválida")
+@app.route("/")
+def home():
+    return "Backend rodando no Render!"
 
+@app.route("/soma/<int:a>/<int:b>")
+def soma(a, b):
+    return jsonify({"resultado": a + b})
